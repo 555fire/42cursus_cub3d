@@ -1,0 +1,9 @@
+mlx/*/
+cub3d
+*.o
+*.a
+.DS_Store
+
+
+
+
