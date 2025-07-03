@@ -5,55 +5,60 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 11:08:20 by lchuang           #+#    #+#             */
-/*   Updated: 2025/06/17 15:23:03 by lchuang          ###   ########.fr       */
+/*   Created: 2025/07/03 22:26:00 by lchuang           #+#    #+#             */
+/*   Updated: 2025/07/03 22:27:24 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	handle_key(int keycode)
-{
-	if (keycode == ESC_KEY)
-	{
-		exit(0);
-	}
-	return (0);
-}
-
-int	handle_close(void)
-{
-	exit(0);
-	return (0);
-}
+#include <math.h>
+#include <string.h>
 
 int	main(int argc, char **argv)
 {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	int		img_width;
-	int		img_height;
+	t_game game;
 
 	if (argc != 2)
 	{
-		write(2, "Usage: ./cub3d <map.cub>\n", 26);
+		fprintf(stderr, "Error!\n");
 		return (1);
 	}
-	parse_cub(argv[1]);
-	mlx = mlx_init();
-	if (!mlx)
+	memset(&game, 0, sizeof(game));
+	game.floor_color = 0x222222;
+	game.ceiling_color = 0x87CEEB;
+
+	if (!parse_map_from_file(argv[1], &game))
+	{
+		fprintf(stderr, "Error!\n");
 		return (1);
-	win = mlx_new_window(mlx, WIDTH, HEIGHT, TITLE);
-	if (!win)
+	}
+	init_player(&game);
+
+	game.mlx = mlx_init();
+	if (!game.mlx)
+	{
+		cleanup_game(&game);
 		return (1);
-	img = mlx_xpm_file_to_image(mlx, "textures/test.xpm", &img_width,
-			&img_height);
-	if (!img)
+	}
+	if (!load_texture(&game, &game.north_tex, game.north_path)
+		|| !load_texture(&game, &game.south_tex, game.south_path)
+		|| !load_texture(&game, &game.east_tex, game.east_path)
+		|| !load_texture(&game, &game.west_tex, game.west_path))
+	{
+		fprintf(stderr, "Error!\n");
+		cleanup_game(&game);
 		return (1);
-	mlx_put_image_to_window(mlx, win, img, 0, 0);
-	mlx_key_hook(win, handle_key, NULL);
-	mlx_hook(win, 17, 0, handle_close, NULL);
-	mlx_loop(mlx);
+	}
+	game.win = mlx_new_window(game.mlx, WIDTH, HEIGHT, "cub3D - Minimap");
+	if (!game.win)
+	{
+		cleanup_game(&game);
+		return (1);
+	}
+	mlx_hook(game.win, 2, 1L << 0, handle_key, &game);
+	mlx_hook(game.win, 17, 1L << 17, handle_close, &game);
+	mlx_loop_hook(game.mlx, render, &game);
+	mlx_loop(game.mlx);
+	cleanup_game(&game);
 	return (0);
 }
