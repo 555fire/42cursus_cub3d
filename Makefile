@@ -6,7 +6,7 @@
 #    By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/16 11:11:56 by lchuang           #+#    #+#              #
-#    Updated: 2025/07/04 10:11:48 by lchuang          ###   ########.fr        #
+#    Updated: 2025/07/04 18:34:06 by lchuang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,17 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRC_DIR = src
 SRCS = 	main.c \
-		parse_map.c \
 		player.c \
 		game_utils.c \
 		raycast/ray_algo.c \
 		raycast/ray_render.c \
 		raycast/raycast.c \
+		map/map.c \
+		map/map_load.c \
+		map/map_header.c \
+		map/map_parser.c \
+		map/map_validate.c \
+		map/utils.c \
 
 OBJ_DIR		=	objs
 OBJ		=	$(SRCS:.c=.o)

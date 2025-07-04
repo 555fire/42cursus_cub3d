@@ -6,7 +6,7 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:27:58 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/04 10:53:51 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/07/04 11:26:02 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_player(t_game *game)
 		x = 0;
 		while (game->map[y][x])
 		{
-			if (strchr("NSEW", game->map[y][x]))
+			if (ft_strchr("NSEW", game->map[y][x]))
 			{
 				game->player.x = x + 0.5;
 				game->player.y = y + 0.5;
@@ -46,8 +46,8 @@ void	init_player(t_game *game)
 
 int	handle_key(int keycode, t_game *game)
 {
-	double new_x;
-	double new_y;
+	double	new_x;
+	double	new_y;
 
 	if (keycode == ESC_KEY)
 	{
