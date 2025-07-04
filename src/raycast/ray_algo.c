@@ -6,7 +6,7 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 09:58:29 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/04 10:53:00 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/07/04 18:37:09 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ t_ray	setup_ray(t_game *g, int x)
 
 	dir_x = cos(g->player.dir);
 	dir_y = sin(g->player.dir);
-	plane_x = -dir_y * tan(FOV / 2.0);
-	plane_y = dir_x * tan(FOV / 2.0);
+	plane_x = -dir_y * tan((M_PI / 3) / 2.0);
+	plane_y = dir_x * tan((M_PI / 3) / 2.0);
 	r.dir_x = dir_x + plane_x * (2.0 * x / (double)WIDTH - 1.0);
 	r.dir_y = dir_y + plane_y * (2.0 * x / (double)WIDTH - 1.0);
 	r.map_x = (int)g->player.x;

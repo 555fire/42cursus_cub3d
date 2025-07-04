@@ -6,13 +6,11 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:26:00 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/04 10:32:32 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/07/04 22:03:35 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <math.h>
-#include <string.h>
 
 int	load_texture(t_game *game, t_texture *tex, char *path)
 {
@@ -25,40 +23,38 @@ int	load_texture(t_game *game, t_texture *tex, char *path)
 	return (1);
 }
 
+static int	init_game_from_file(char *path, t_game *game)
+{
+	ft_memset(game, 0, sizeof(*game));
+	if (!parse_map_from_file(path, game))
+		return (0);
+	init_player(game);
+	return (1);
+}
+
+static int	init_graphics(t_game *game)
+{
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		return (0);
+	if (!load_texture(game, &game->north_tex, game->north_path)
+		|| !load_texture(game, &game->south_tex, game->south_path)
+		|| !load_texture(game, &game->east_tex, game->east_path)
+		|| !load_texture(game, &game->west_tex, game->west_path))
+		return (0);
+	game->win = mlx_new_window(game->mlx, WIDTH, HEIGHT, "cub3D - Minimap");
+	return (game->win != NULL);
+}
+
 int	main(int argc, char **argv)
 {
-	t_game game;
+	t_game	game;
 
 	if (argc != 2)
+		return (fprintf(stderr, "Error!\n"), 1);
+	if (!init_game_from_file(argv[1], &game) || !init_graphics(&game))
 	{
 		fprintf(stderr, "Error!\n");
-		return (1);
-	}
-	ft_memset(&game, 0, sizeof(game));
-	if (!parse_map_from_file(argv[1], &game))
-	{
-		fprintf(stderr, "Error!\n");
-		return (1);
-	}
-	init_player(&game);
-	game.mlx = mlx_init();
-	if (!game.mlx)
-	{
-		cleanup_game(&game);
-		return (1);
-	}
-	if (!load_texture(&game, &game.north_tex, game.north_path)
-		|| !load_texture(&game, &game.south_tex, game.south_path)
-		|| !load_texture(&game, &game.east_tex, game.east_path)
-		|| !load_texture(&game, &game.west_tex, game.west_path))
-	{
-		fprintf(stderr, "Error!\n");
-		cleanup_game(&game);
-		return (1);
-	}
-	game.win = mlx_new_window(game.mlx, WIDTH, HEIGHT, "cub3D - Minimap");
-	if (!game.win)
-	{
 		cleanup_game(&game);
 		return (1);
 	}

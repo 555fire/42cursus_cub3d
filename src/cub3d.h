@@ -6,18 +6,18 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:50:37 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/04 11:17:46 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/07/04 18:37:22 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "mlx.h"
 # include "libft.h"
 # include "structs.h"
-# include "raycast/raycast.h"
 # include "map/map.h"
+# include "mlx.h"
+# include "raycast/raycast.h"
 # include <fcntl.h>
 # include <math.h>
 # include <stdio.h>
@@ -42,11 +42,10 @@
 # define ROT_SPEED 0.1
 
 # define TILE_SIZE 10
-# define FOV (M_PI / 3)
 
-void			init_player(t_game *game);
-void			cleanup_game(t_game *game);
-int				handle_key(int keycode, t_game *game);
-int				handle_close(t_game *game);
+void	init_player(t_game *game);
+void	cleanup_game(t_game *game);
+int		handle_key(int keycode, t_game *game);
+int		handle_close(t_game *game);
 
 #endif
