@@ -6,7 +6,7 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:25:58 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/03 22:25:59 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/07/03 22:53:31 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 void	cleanup_game(t_game *game)
 {
+	int	i;
+
 	if (game->map)
 	{
-		for (int i = 0; i < game->map_height; i++)
+		i = 0;
+		while (i < game->map_height)
 		{
 			if (game->map[i])
 				free(game->map[i]);
+			i++;
 		}
 		free(game->map);
 	}

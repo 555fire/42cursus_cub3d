@@ -6,13 +6,24 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:26:00 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/03 22:27:24 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/07/04 10:32:32 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <math.h>
 #include <string.h>
+
+int	load_texture(t_game *game, t_texture *tex, char *path)
+{
+	tex->img = mlx_xpm_file_to_image(game->mlx, path, &tex->width,
+			&tex->height);
+	if (!tex->img)
+		return (0);
+	tex->addr = mlx_get_data_addr(tex->img, &tex->bpp, &tex->size_line,
+			&tex->endian);
+	return (1);
+}
 
 int	main(int argc, char **argv)
 {
@@ -23,17 +34,13 @@ int	main(int argc, char **argv)
 		fprintf(stderr, "Error!\n");
 		return (1);
 	}
-	memset(&game, 0, sizeof(game));
-	game.floor_color = 0x222222;
-	game.ceiling_color = 0x87CEEB;
-
+	ft_memset(&game, 0, sizeof(game));
 	if (!parse_map_from_file(argv[1], &game))
 	{
 		fprintf(stderr, "Error!\n");
 		return (1);
 	}
 	init_player(&game);
-
 	game.mlx = mlx_init();
 	if (!game.mlx)
 	{
