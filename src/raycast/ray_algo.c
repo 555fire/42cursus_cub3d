@@ -6,7 +6,7 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 09:58:29 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/04 18:37:09 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/07/12 12:13:02 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static void	init_ray_params(t_game *g, t_ray *r)
 {
 	if (r->dir_x == 0)
-		r->delta_x = 1e30;
+		r->delta_x = MAX_INFINITY;
 	else
 		r->delta_x = fabs(1.0 / r->dir_x);
 	if (r->dir_y == 0)
-		r->delta_y = 1e30;
+		r->delta_y = MAX_INFINITY;
 	else
 		r->delta_y = fabs(1.0 / r->dir_y);
 	if (r->dir_x < 0)
@@ -95,8 +95,8 @@ void	calc_line_params(t_game *g, t_ray *r, int side, t_column_params *p)
 		perp_dist = (r->map_x - g->player.x + (1 - r->step_x) / 2.0) / r->dir_x;
 	else
 		perp_dist = (r->map_y - g->player.y + (1 - r->step_y) / 2.0) / r->dir_y;
-	if (perp_dist < 1e-4)
-		perp_dist = 1e-4;
+	if (perp_dist < MIN_INFINITY)
+		perp_dist = MIN_INFINITY;
 	line_height = (int)(HEIGHT / perp_dist);
 	if (line_height > HEIGHT)
 		line_height = HEIGHT;

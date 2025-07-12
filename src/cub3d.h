@@ -6,7 +6,7 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:50:37 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/04 18:37:22 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/07/12 11:53:31 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@
 # define MOVE_SPEED 0.5
 # define ROT_SPEED 0.1
 
-# define TILE_SIZE 10
+# define MAX_INFINITY 1e30
+# define MIN_INFINITY 0.3
 
 void	init_player(t_game *game);
 void	cleanup_game(t_game *game);
