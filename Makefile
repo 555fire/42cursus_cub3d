@@ -6,13 +6,13 @@
 #    By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/16 11:11:56 by lchuang           #+#    #+#              #
-#    Updated: 2025/07/04 18:34:06 by lchuang          ###   ########.fr        #
+#    Updated: 2025/07/14 11:06:21 by lchuang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Iincludes
 
 SRC_DIR = src
 SRCS = 	main.c \

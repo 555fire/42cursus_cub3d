@@ -6,14 +6,15 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 10:00:53 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/04 10:47:13 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/07/14 11:09:30 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCAST_H
 # define RAYCAST_H
 
-# include "../cub3d.h"
+# include "cub3d.h"
+# include "structs.h"
 
 int		render(t_game *game);
 void	draw_column(t_game *game, int x);

@@ -6,14 +6,15 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 11:13:55 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/04 18:33:40 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/07/14 11:09:27 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 
-# include "../cub3d.h"
+# include "cub3d.h"
+# include "structs.h"
 
 # define ID_NO 1
 # define ID_SO 2

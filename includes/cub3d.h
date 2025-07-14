@@ -6,7 +6,7 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:50:37 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/12 11:53:31 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/07/14 11:10:28 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define CUB3D_H
 
 # include "libft.h"
-# include "structs.h"
-# include "map/map.h"
+# include "map.h"
 # include "mlx.h"
-# include "raycast/raycast.h"
+# include "raycast.h"
+# include "structs.h"
 # include <fcntl.h>
 # include <math.h>
 # include <stdio.h>
@@ -38,11 +38,11 @@
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
 
-# define MOVE_SPEED 0.5
+# define MOVE_SPEED 1
 # define ROT_SPEED 0.1
 
 # define MAX_INFINITY 1e30
-# define MIN_INFINITY 0.3
+# define MIN_INFINITY 0.05
 
 void	init_player(t_game *game);
 void	cleanup_game(t_game *game);
