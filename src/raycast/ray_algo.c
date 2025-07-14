@@ -6,7 +6,7 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 09:58:29 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/12 12:13:02 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/07/14 11:16:51 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,6 @@ void	calc_line_params(t_game *g, t_ray *r, int side, t_column_params *p)
 	if (perp_dist < MIN_INFINITY)
 		perp_dist = MIN_INFINITY;
 	line_height = (int)(HEIGHT / perp_dist);
-	if (line_height > HEIGHT)
-		line_height = HEIGHT;
 	draw_start = -line_height / 2 + HEIGHT / 2;
 	if (draw_start < 0)
 		draw_start = 0;
