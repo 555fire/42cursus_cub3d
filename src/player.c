@@ -6,7 +6,7 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:27:58 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/04 22:53:52 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/07/14 11:07:09 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,10 @@ void	init_player(t_game *game)
 
 static void	try_move(t_game *game, double new_x, double new_y)
 {
-	if (game->map[(int)new_y][(int)new_x] != '1')
-	{
+	if (game->map[(int)game->player.y][(int)new_x] != '1')
 		game->player.x = new_x;
+	if (game->map[(int)new_y][(int)game->player.x] != '1')
 		game->player.y = new_y;
-	}
 }
 
 static void	process_movement(int keycode, t_game *game)
