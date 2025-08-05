@@ -6,7 +6,7 @@
 #    By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/16 11:11:56 by lchuang           #+#    #+#              #
-#    Updated: 2025/08/05 15:33:49 by mamiyaza         ###   ########.fr        #
+#    Updated: 2025/08/06 06:33:21 by mamiyaza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,10 +75,8 @@ MLX_LIB = -L$(MLX_DIR) -lmlx -lXext -lX11
 endif
 
 
-
 # libm
 LIBM_LIB = -lm
-
 
 
 CFLAGS += $(MLX_INC)
@@ -86,13 +84,36 @@ CFLAGS += $(MLX_INC)
 LDFLAGS += $(MLX_LIB) $(LIBFT_LIB) $(LIBM_LIB)
 
 
-# test
-TEST1 = map/test1.cub
-# TEST1 = map/test.cub
+
+# make
+MAKE = make
+ALL = all
+CLEAN = clean
+FCLEAN = fclean
+FFCLEAN = ffclean
+RE = re
+RUN = run
+
+
+# TEST = test
+TEST_H = test_h
+TEST_E = test_e
+
+# command
+RM = rm -f
+RM_DIR = rm -rf
+
+CLEAR = clear
+
+
+# testcase
+TESTCASE1 = map/test1_north.cub
+# TESTCASE1 = map/test.cub
 
 
 
-all: $(NAME)
+
+$(ALL): $(NAME)
 
 # $(NAME): $(OBJ) $(MLX_DIR)/libmlx.a $(LIBFT)
 # $(NAME): $(MLX) $(LIBFT) $(OBJ)
@@ -120,30 +141,44 @@ $(MLX):
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
-clean:
-	rm -rf $(OBJ_DIR)
-#	rm -rf $(MLX_DIR)
-	@if [ -d $(MLX_DIR) ]; then $(MAKE) -C $(MLX_DIR) clean; fi
-#	$(MAKE) -C $(MLX_DIR) clean
-#	$(MAKE) -C $(MLX_DIR) clean
-	$(MAKE) -C $(LIBFT_DIR) clean
+$(CLEAN):
+	$(RM_DIR) $(OBJ_DIR)
+#	$(RM_DIR) $(MLX_DIR)
+	@if [ -d $(MLX_DIR) ]; then $(MAKE) -C $(MLX_DIR) $(CLEAN); fi
+#	$(MAKE) -C $(MLX_DIR) $(CLEAN)
+#	$(MAKE) -C $(MLX_DIR) $(CLEAN)
+	$(MAKE) -C $(LIBFT_DIR) $(CLEAN)
 
-fclean: clean
-	rm -f $(NAME)
-#	$(MAKE) -C $(MLX_DIR) clean
-#	$(MAKE) -C $(LIBFT_DIR) fclean
+$(FCLEAN): $(CLEAN)
+	$(RM) $(NAME)
+#	$(MAKE) -C $(MLX_DIR) $(CLEAN)
+#	$(MAKE) -C $(LIBFT_DIR) $(FCLEAN)
 
-ffclean: fclean
-	rm -rf $(MLX_DIR)
-	clear
+$(FFCLEAN): $(FCLEAN)
+	$(RM_DIR) $(MLX_DIR)
+	$(CLEAR)
 
-re: fclean all
-
-run:
-	$(MAKE) re
-	./$(NAME) $(TEST1)
-	$(MAKE) fclean
+$(RE): $(FCLEAN) $(ALL)
 
 
 
-.PHONY: all clean fclean ffclean re run
+$(RUN):
+	$(MAKE) $(RE)
+	./$(NAME) $(TESTCASE1)
+	$(MAKE) $(FCLEAN)
+
+
+
+$(TEST_H):
+	$(MAKE) $(RE)
+	find ./map -name 'test*' -type f -print -exec ./cub3d \{\} \;
+	$(MAKE) 
+
+$(TEST_E):
+	$(MAKE) $(RE)
+	find ./map/invalid_maps -name '*' -type f -print -exec ./cub3d \{\} \;
+	$(MAKE) $(FCLEAN)
+
+
+
+.PHONY: $(ALL) $(CLEAN) $(FCLEAN) $(FFCLEAN) $(RE) $(RUN)

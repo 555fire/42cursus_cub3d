@@ -1,0 +1,311 @@
+find ./map/invalid_maps -name '*' -type f -print -exec ./cub3d \{\} \;
+./map/invalid_maps/invalid_test113_valid.cub
+./map/invalid_maps/invalid_test61_internal_no_wall.cub
+Error
+ :Map has open space
+
+./map/invalid_maps/invalid_test62_internal_no_wall.cub
+Error
+ :Map has open space
+
+./map/invalid_maps/invalid_test114_valid.cub
+./map/invalid_maps/invalid_test66_internal_no_wall.cub
+Error
+ :Map has open space
+
+./map/invalid_maps/invalid_test64_internal_no_wall.cub
+Error
+ :Map has open space
+
+./map/invalid_maps/invalid_test63_internal_no_wall.cub
+Error
+ :Map has open space
+
+./map/invalid_maps/invalid_test115_valid.cub
+./map/invalid_maps/invalid_test24_invalid_character.cub
+Error
+ :Map has open space
+
+./map/invalid_maps/invalid_test25_invalid_character.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test26_invalid_character.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test170_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test0_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test60_valid.cub
+Error
+ :Map has open space
+
+./map/invalid_maps/invalid_test30_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test143_invalid_texture_identifier.cub
+Error
+ :Invalid or duplicate header element
+
+./map/invalid_maps/invalid_test33_player_is_not_capital_character.cub
+Error
+ :Map must contain exactly one player start
+
+./map/invalid_maps/invalid_test34_player_is_not_capital_character.cub
+Error
+ :Map must contain exactly one player start
+
+./map/invalid_maps/invalid_test35_duplicate_player.cub
+Error
+ :Map must contain exactly one player start
+
+./map/invalid_maps/invalid_test37_duplicate_player.cub
+Error
+ :Map must contain exactly one player start
+
+./map/invalid_maps/invalid_test12_empty_line.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test100_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test102_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test127_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test141_invalid_texture_identifier.cub
+Error
+ :Invalid or duplicate header element
+
+./map/invalid_maps/invalid_test1_invalid_extension.cubb
+Thank you for playing!
+
+./map/invalid_maps/invalid_test2_invalid_extention.cu
+Thank you for playing!
+
+./map/invalid_maps/invalid_test3_invalid_extention.cub 
+Thank you for playing!
+
+./map/invalid_maps/invalid_test4_invalid_whitespace aaa.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test5_invalid_extension.cub.aaa
+Thank you for playing!
+
+./map/invalid_maps/invalid_test6_invalid_extention.cub.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test173_undefined.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test104_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test107_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test110_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test11_empty_file.cub
+Error
+ :Missing header elements
+
+./map/invalid_maps/invalid_test172_undefined.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test51_no_wall.cub
+Error
+ :Map has open space
+
+./map/invalid_maps/invalid_test52_no_wall.cub
+Error
+ :Map has open space
+
+./map/invalid_maps/invalid_test53_no_wall.cub
+Error
+ :Map has open space
+
+./map/invalid_maps/invalid_test54_no_wall.cub
+Error
+ :Map not enclosed by walls
+
+./map/invalid_maps/invalid_test55_no_wall.cub
+Error
+ :Map has open space
+
+./map/invalid_maps/invalid_test56_no_wall.cub
+Error
+ :Map not enclosed by walls
+
+./map/invalid_maps/invalid_test57_no_wall.cub
+Error
+ :Map not enclosed by walls
+
+./map/invalid_maps/invalid_test175_undefined.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test13_empty_line.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test174_undefined.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test101_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test103_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test105_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test171_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test177_invalid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test21_invalid_character.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test22_invalid_character.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test23_invalid_character.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test140_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test160_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test65_internal_no_wall.cub
+Error
+ :Map has open space
+
+./map/invalid_maps/invalid_test50_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test20_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test161_invalid_texture_path.cub
+./map/invalid_maps/invalid_test27_invalid_character.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test10_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test176_invalid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test31_player_is_not_capital_character.cub
+Error
+ :Map must contain exactly one player start
+
+./map/invalid_maps/invalid_test32_player_is_not_capital_character.cub
+Error
+ :Map must contain exactly one player start
+
+./map/invalid_maps/invalid_test162_invalid_texture_path.cub
+./map/invalid_maps/invalid_test36_duplicate_player.cub
+Error
+ :Map must contain exactly one player start
+
+./map/invalid_maps/invalid_test38_duplicate_player.cub
+Error
+ :Map must contain exactly one player start
+
+./map/invalid_maps/invalid_test14_empty_line.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test106_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test142_invalid_texture_identifier.cub
+Error
+ :Invalid or duplicate header element
+
+./map/invalid_maps/invalid_test111_valid.cub
+./map/invalid_maps/invalid_test120_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test121_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test122_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test123_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test124_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test125_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test126_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test128_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test112_valid.cub
+./map/invalid_maps/invalid_test144_invalid_texture_identifier.cub
+Error
+ :Invalid or duplicate header element
+
+./map/invalid_maps/invalid_test145_invalid_texture_identifier.cub
+Error
+ :Invalid or duplicate header element
+
+./map/invalid_maps/invalid_test146_invalid_texture_identifier.cub
+Error
+ :Invalid or duplicate header element
+
+./map/invalid_maps/invalid_test163_invalid_texture_path.cub
+./map/invalid_maps/invalid_test164_invalid_texture_path.cub
+./map/invalid_maps/invalid_test165_invalid_texture_path.cub
+./map/invalid_maps/invalid_test180_valid.cub
+Thank you for playing!
+
+./map/invalid_maps/invalid_test181_invalid_texture_color_range.cub
+Error
+ :Invalid or duplicate header element
+
+./map/invalid_maps/invalid_test182_invalid_texture_color_range.cub
+Error
+ :Invalid or duplicate header element
+
+./map/invalid_maps/invalid_test183_invalid_texture_color_range.cub
+Error
+ :Invalid or duplicate header element
+
+./map/invalid_maps/invalid_test184_invalid_texture_color_range.cub
+Error
+ :Invalid or duplicate header element
+
+./map/invalid_maps/invalid_test185_invalid_texture_color_range.cub
+Error
+ :Invalid or duplicate header element
+
+./map/invalid_maps/invalid_test186_invalid_texture_color_range.cub
+Error
+ :Invalid or duplicate header element
+
+./map/invalid_maps/invalid_test187_invalid_texture_color_range.cub
+Error
+ :Invalid or duplicate header element
+
+./map/invalid_maps/invalid_test188_invalid_texture_color_range.cub
+Error
+ :Invalid or duplicate header element
+
+make fclean

@@ -6,7 +6,7 @@
 /*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:27:58 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/05 15:52:46 by mamiyaza         ###   ########.fr       */
+/*   Updated: 2025/08/06 00:02:30 by mamiyaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int	handle_key(int keycode, t_game *game)
 	if (keycode == ESC_KEY)
 	{
 		cleanup_game(game);
+		put_endmsg();
 		exit(0);
 	}
 	process_movement(keycode, game);

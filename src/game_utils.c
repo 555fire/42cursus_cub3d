@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:25:58 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/04 18:37:44 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/06 00:00:11 by mamiyaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	cleanup_game(t_game *game)
 int	handle_close(t_game *game)
 {
 	cleanup_game(game);
+	put_endmsg();
 	exit(0);
 	return (0);
 }

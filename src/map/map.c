@@ -6,7 +6,7 @@
 /*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 11:14:11 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/05 16:05:56 by mamiyaza         ###   ########.fr       */
+/*   Updated: 2025/08/05 23:35:22 by mamiyaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,11 @@ static int	load_map_data(const char *filename, t_game *game,
 	game->ceiling_color = -1;
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		return (printf("Cannot open file %s\n", filename), 0);
+		return (printf("Error\nCannot open file %s\n", filename), 0);
 	if (!read_header(fd, game, &flags))
 		return (close(fd), 0);
 	if (flags != (ID_NO | ID_SO | ID_WE | ID_EA | ID_F | ID_C))
-		return (close(fd), put_stderr("Missing header elements"));
+		return (close(fd), put_errmsg("Missing header elements"));
 	total_lines = count_lines(filename);
 	if (total_lines < 0)
 		return (close(fd), 0);
