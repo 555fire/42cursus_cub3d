@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:26:00 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/04 22:03:35 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/05 07:49:33 by mamiyaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc != 2)
-		return (fprintf(stderr, "Error!\n"), 1);
+		return (fprintf(stderr, "Error!\nInvalid Input\n"), 1);
 	if (!init_game_from_file(argv[1], &game) || !init_graphics(&game))
 	{
-		fprintf(stderr, "Error!\n");
+		fprintf(stderr, "Error!\nInit Failed\n");
 		cleanup_game(&game);
 		return (1);
 	}
