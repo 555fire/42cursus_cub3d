@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 17:12:03 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/06 07:31:50 by mamiyaza         ###   ########.fr       */
+/*   Updated: 2025/08/06 08:34:50 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,22 @@
 
 static int	validate_map_cell(t_game *game, int y, int x, int *player_cnt)
 {
-	char	c;
+	char	cell;
 
-	c = game->map[y][x];
-	if (c == ' ')
-		return (1);
-	if (c == '0' || ft_strchr("NSEW", c))
+	cell = game->map[y][x];
+	if (ft_strchr("NSWE", cell))
+		(*player_cnt)++;
+	if (ft_strchr("0NSWE", cell))
 	{
 		if (y == 0 || y == game->map_height - 1 || x == 0
-			|| x == game->map_width - 1)
-			return (put_errmsg("Not enclosed by walls"));
-		if (game->map[y - 1][x] == ' ' || game->map[y + 1][x] == ' '
+			|| x >= (int)ft_strlen(game->map[y - 1])
+			|| x >= (int)ft_strlen(game->map[y + 1])
+			|| game->map[y - 1][x] == ' ' || game->map[y + 1][x] == ' '
 			|| game->map[y][x - 1] == ' ' || game->map[y][x + 1] == ' ')
-			return (put_errmsg("Invalid open space"));
-		if (ft_strchr("NSEW", c))
-			(*player_cnt)++;
+			return (put_errmsg("Map must be enclosed by walls"));
 	}
-	else if (c != '1')
-		return (put_errmsg("Invalid character"));
+	else if (cell != '1' && cell != ' ')
+		return (put_errmsg("Invalid character in map"));
 	return (1);
 }
 
@@ -44,7 +42,7 @@ static int	validate_map_body(t_game *game, int *player_cnt)
 	while (y < game->map_height)
 	{
 		x = 0;
-		while (x < game->map_width)
+		while (game->map[y][x])
 		{
 			if (!validate_map_cell(game, y, x, player_cnt))
 				return (0);

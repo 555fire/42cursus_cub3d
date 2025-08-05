@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:26:00 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/05 23:55:47 by mamiyaza         ###   ########.fr       */
+/*   Updated: 2025/08/06 08:45:27 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ static int	init_graphics(t_game *game)
 	if (!load_texture(game, &game->north_tex, game->north_path)
 		|| !load_texture(game, &game->south_tex, game->south_path)
 		|| !load_texture(game, &game->east_tex, game->east_path)
-		|| !load_texture(game, &game->west_tex, game->west_path))
-		return (0);
+		|| !load_texture(game, &game->west_tex, game->west_path)){
+		return (put_errmsg("load_texture failed"));
+	}
 	game->win = mlx_new_window(game->mlx, WIDTH, HEIGHT, "cub3D - Minimap");
 	return (game->win != NULL);
 }
