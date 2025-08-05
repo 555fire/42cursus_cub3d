@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 17:10:12 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/04 17:14:13 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/05 16:04:13 by mamiyaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,17 @@ int	rpg_to_bit(char *str)
 	return ((r << 16) | (g << 8) | b);
 }
 
-int	error_msg(char *msg)
+int	put_stderr(char *msg)
 {
-	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(msg, 2);
 	ft_putstr_fd("\n", 2);
 	return (0);
 }
+
+// int	put_stderr(char *msg)
+// {
+// 	ft_putstr_fd("Error\n", 2);
+// 	ft_putstr_fd(msg, 2);
+// 	ft_putstr_fd("\n", 2);
+// 	return (0);
+// }

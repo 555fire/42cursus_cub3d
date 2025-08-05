@@ -6,7 +6,7 @@
 #    By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/16 11:11:56 by lchuang           #+#    #+#              #
-#    Updated: 2025/08/05 08:23:13 by mamiyaza         ###   ########.fr        #
+#    Updated: 2025/08/05 15:33:49 by mamiyaza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,8 @@ LDFLAGS += $(MLX_LIB) $(LIBFT_LIB) $(LIBM_LIB)
 
 
 # test
-TEST1 = map/test.cub
+TEST1 = map/test1.cub
+# TEST1 = map/test.cub
 
 
 

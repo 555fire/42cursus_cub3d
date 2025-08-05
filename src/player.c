@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:27:58 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/14 11:07:09 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/05 15:52:46 by mamiyaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ int	handle_key(int keycode, t_game *game)
 		exit(0);
 	}
 	process_movement(keycode, game);
-	if (keycode == KEY_LEFT)
+	if (keycode == KEY_RIGHT)
 		game->player.dir -= ROT_SPEED;
-	else if (keycode == KEY_RIGHT)
+	else if (keycode == KEY_LEFT)
 		game->player.dir += ROT_SPEED;
 	if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_load.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 11:13:20 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/04 18:33:26 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/05 16:05:42 by mamiyaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	count_lines(const char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 	{
-		printf("Error: Cannot open file %s\n", filename);
+		printf("Cannot open file %s\n", filename);
 		return (-1);
 	}
 	count = 0;

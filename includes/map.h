@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 11:13:55 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/14 11:09:27 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/05 16:04:13 by mamiyaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int			parse_header_line(char *line, t_game *game);
 
 void		free_split(char **parts);
 int			rpg_to_bit(char *str);
-int			error_msg(char *msg);
+int			put_stderr(char *msg);
+// int			put_stderr(char *msg);
 
 char		*read_line(int fd);
 

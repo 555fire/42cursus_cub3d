@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:50:37 by lchuang           #+#    #+#             */
-/*   Updated: 2025/07/14 11:10:28 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/05 15:52:06 by mamiyaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,20 @@
 # define TITLE "cub3d test window"
 # define MAX_LINE 1024
 
-# define ESC_KEY 53
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_LEFT 123
-# define KEY_RIGHT 124
+# define ESC_KEY 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_LEFT 65363
+# define KEY_RIGHT 65361
+// # define ESC_KEY 53
+// # define KEY_W 13
+// # define KEY_A 0
+// # define KEY_S 1
+// # define KEY_D 2
+// # define KEY_LEFT 123
+// # define KEY_RIGHT 124
 
 # define MOVE_SPEED 1
 # define ROT_SPEED 0.1
