@@ -6,7 +6,7 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 18:31:35 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/06 13:04:15 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/06 14:02:04 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ int	is_map_line(const char *line)
 	{
 		if (line[i] != '0' && line[i] != '1' && line[i] != ' ' && line[i] != 'N'
 			&& line[i] != 'S' && line[i] != 'E' && line[i] != 'W')
-		{
-			put_errmsg("Invalid character in map");
-			return (2);
-		}
+			return (0);
 		i++;
 	}
 	return (1);
@@ -54,12 +51,7 @@ char	*read_header(int fd, t_game *game, int *flags)
 		line = read_line(fd);
 		if (!line)
 			break ;
-		if (is_map_line(line) == 2)
-		{
-			free(line);
-			return (NULL);
-		}
-		else if (is_map_line(line))
+		if (is_map_line(line))
 			return (line);
 		if (!add_header_element(line, game, flags))
 		{
