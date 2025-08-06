@@ -6,7 +6,7 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 11:13:20 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/06 14:34:36 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/06 15:17:16 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	is_map_line_new(const char *line)
 	if (line[i] && (line[i] == 'F' || line[i] == 'C'))
 		return (0);
 	if (!line[i])
-		return (0);
+		return (1);
 	return (1);
 }
 
