@@ -6,7 +6,7 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:26:00 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/06 08:45:27 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/06 11:12:23 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,24 @@ static int	init_graphics(t_game *game)
 	return (game->win != NULL);
 }
 
+static int	validate_filename(const char *filename)
+{
+	const char	*extension;
+
+	extension = ft_strrchr(filename, '.');
+	if (!extension || ft_strcmp(extension, ".cub") != 0)
+		return (0);
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	game;
 
 	if (argc != 2)
-		return (put_errmsg("Invalid input"), 1);
+		return (put_errmsg("Invalid input: Usage ./cub3d <map_file.cub>"), 1);
+	if (!validate_filename(argv[1]))
+		return (put_errmsg("Invalid file extension: must be .cub"), 1);
 	if (!init_game_from_file(argv[1], &game) || !init_graphics(&game))
 	{
 		// fprintf(stderr, "Error\n");
