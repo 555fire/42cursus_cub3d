@@ -6,9 +6,10 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 11:13:55 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/06 12:15:49 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/06 14:33:31 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef MAP_H
 # define MAP_H
@@ -46,5 +47,7 @@ int			put_endmsg(void);
 // int			put_stderr(char *msg);
 
 char		*read_line(int fd);
+int			convert_map_to_game(t_game *game, t_map_data d);
+void		free_game_map_data(t_game *game);
 
 #endif

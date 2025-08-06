@@ -6,7 +6,7 @@
 #    By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/16 11:11:56 by lchuang           #+#    #+#              #
-#    Updated: 2025/08/06 12:36:58 by mamiyaza         ###   ########.fr        #
+#    Updated: 2025/08/06 15:03:48 by mamiyaza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS = 	main.c \
 		map/map_parser.c \
 		map/map_validate.c \
 		map/utils.c \
+		map/map_data.c
 
 OBJ_DIR		=	objs
 OBJ		=	$(SRCS:.c=.o)

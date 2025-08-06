@@ -6,11 +6,33 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 11:13:20 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/06 12:15:50 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/06 14:34:36 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
+
+int	is_map_line_new(const char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] && (line[i] == ' ' || line[i] == '\t'))
+		i++;
+	if (line[i] && (line[i] == 'N' && line[i + 1] == 'O'))
+		return (0);
+	if (line[i] && (line[i] == 'S' && line[i + 1] == 'O'))
+		return (0);
+	if (line[i] && (line[i] == 'W' && line[i + 1] == 'E'))
+		return (0);
+	if (line[i] && (line[i] == 'E' && line[i + 1] == 'A'))
+		return (0);
+	if (line[i] && (line[i] == 'F' || line[i] == 'C'))
+		return (0);
+	if (!line[i])
+		return (0);
+	return (1);
+}
 
 char	*read_line(int fd)
 {
@@ -55,7 +77,7 @@ int	count_lines(const char *filename)
 	line = read_line(fd);
 	while (line != NULL)
 	{
-		if (is_map_line(line))
+		if (is_map_line_new(line))
 			count++;
 		free(line);
 		line = read_line(fd);
@@ -82,12 +104,10 @@ static int	read_map_lines_loop(int fd, char **map_lines, t_map_data *data)
 	line = read_line(fd);
 	while (line)
 	{
-		if (is_map_line(line))
+		if (is_map_line_new(line))
 			store_map_line(line, map_lines, data);
 		else
 		{
-			// According to the logic, non-map lines should not appear here.
-			// If they do, it's safer to free them to prevent memory leaks.
 			free(line);
 		}
 		line = read_line(fd);

@@ -3,86 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 11:14:11 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/06
- 12:15:49 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/06 14:39:46 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-static int	alloc_game_map(t_game *game, int map_count, int map_width)
-{
-	int	i;
-	int	j;
 
-	game->map = malloc(sizeof(char *) * (map_count + 1));
-	if (!game->map)
-		return (0);
-	i = 0;
-	while (i < map_count)
-	{
-		game->map[i] = malloc(sizeof(char) * (map_width + 1));
-		if (!game->map[i])
-		{
-			j = i;
-			while (--j >= 0)
-				free(game->map[j]);
-			free(game->map);
-			game->map = NULL;
-			return (0);
-		}
-		ft_memset(game->map[i], ' ', map_width);
-		game->map[i][map_width] = '\0';
-		i++;
-	}
-	game->map[map_count] = NULL;
-	return (1);
-}
-
-static int	convert_map_to_game(t_game *game, t_map_data d)
-{
-	int	i;
-
-	game->map_height = d.count;
-	game->map_width = d.width;
-	if (!alloc_game_map(game, d.count, d.width))
-		return (0);
-	i = 0;
-	while (i < d.count)
-	{
-		ft_memcpy(game->map[i], d.lines[i], ft_strlen(d.lines[i]));
-		free(d.lines[i]);
-		i++;
-	}
-	free(d.lines);
-	return (1);
-}
-
-static void	free_game_map_data(t_game *game)
-{
-	int	i;
-
-	if (!game->map)
-		return ;
-	i = 0;
-	while (i < game->map_height)
-		free(game->map[i++]);
-	free(game->map);
-	game->map = NULL;
-}
-
-static int	open_and_validate_file(const char *filename)
-{
-	int	fd;
-
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		return (printf("Error\nCannot open file %s\n", filename), -1);
-	return (fd);
-}
 
 static char	*process_map_header(int fd, t_game *game)
 {
@@ -123,6 +53,16 @@ static int	load_and_process_map_content(int fd, const char *filename,
 		return (0);
 	}
 	return (1);
+}
+
+static int	open_and_validate_file(const char *filename)
+{
+	int	fd;
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (printf("Error\nCannot open file %s\n", filename), -1);
+	return (fd);
 }
 
 static int	load_map_data(const char *filename, t_game *game,

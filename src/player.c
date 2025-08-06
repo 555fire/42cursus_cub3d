@@ -6,7 +6,7 @@
 /*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:27:58 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/06 13:06:08 by mamiyaza         ###   ########.fr       */
+/*   Updated: 2025/08/06 15:04:58 by mamiyaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ static void	place_player(t_game *game, int x, int y, char c)
 	game->player.y = y + 0.5;
 	if (c == 'N')
 		game->player.dir = 3 * M_PI / 2;
-		// game->player.dir = M_PI / 2;
 	else if (c == 'S')
 		game->player.dir = M_PI / 2;
-		// game->player.dir = 3 * M_PI / 2;
 	else if (c == 'E')
 		game->player.dir = 0;
 	else if (c == 'W')
