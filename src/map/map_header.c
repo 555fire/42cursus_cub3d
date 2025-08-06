@@ -3,14 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   map_header.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 18:31:35 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/05 23:35:22 by mamiyaza         ###   ########.fr       */
+/*   Updated: 2025/08/06 09:08:03 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
+
+int	is_map_line(const char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] && (line[i] == ' ' || line[i] == '\t'))
+		i++;
+	if (!line[i])
+		return (0);
+	while (line[i])
+	{
+		if (line[i] != '0' && line[i] != '1' && line[i] != ' ' && line[i] != 'N'
+			&& line[i] != 'S' && line[i] != 'E' && line[i] != 'W')
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 static int	add_header_element(char *line, t_game *game, int *flags)
 {
