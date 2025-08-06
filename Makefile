@@ -6,7 +6,7 @@
 #    By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/16 11:11:56 by lchuang           #+#    #+#              #
-#    Updated: 2025/08/06 06:33:21 by mamiyaza         ###   ########.fr        #
+#    Updated: 2025/08/06 12:36:58 by mamiyaza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,6 +98,7 @@ RUN = run
 # TEST = test
 TEST_H = test_h
 TEST_E = test_e
+TEST_EE = test_ee
 
 # command
 RM = rm -f
@@ -177,6 +178,11 @@ $(TEST_H):
 $(TEST_E):
 	$(MAKE) $(RE)
 	find ./map/invalid_maps -name '*' -type f -print -exec ./cub3d \{\} \;
+	$(MAKE) $(FCLEAN)
+
+$(TEST_EE):
+	$(MAKE) $(RE)
+	find ./map/invalid_maps -name '*invalid_character*' -type f -print -exec ./cub3d \{\} \;
 	$(MAKE) $(FCLEAN)
 
 

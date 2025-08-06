@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 17:12:03 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/06 12:46:39 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/06 13:47:25 by mamiyaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static int	validate_map_cell(t_game *game, int y, int x, int *player_cnt)
 		(*player_cnt)++;
 	if (ft_strchr("0NSWE", cell))
 	{
+		
 		if (y == 0 || y == game->map_height - 1 || x == 0)
 			return (put_errmsg("Map must be enclosed by walls"));
 		if (x >= (int)ft_strlen(game->map[y - 1]))
