@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 17:10:12 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/06 00:13:06 by mamiyaza         ###   ########.fr       */
+/*   Updated: 2025/08/06 11:32:21 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
 #define ANSI_BOLD_RED "\033[1;31m"
-#define ANSI_ITALIC_RED "\033[3;31m"
-#define ANSI_ITALIC_CYAN "\033[3;36m"
+#define ANSI_RED "\033[3;31m"
+#define ANSI_CYAN "\033[3;36m"
 #define ANSI_RESET "\033[m"
 
 void	free_split(char **parts)
@@ -57,7 +57,7 @@ int	rpg_to_bit(char *str)
 
 int	put_errmsg(char *msg)
 {
-	ft_putstr_fd(ANSI_BOLD_RED "Error\n :" ANSI_RESET ANSI_ITALIC_RED, STDERR_FILENO);
+	ft_putstr_fd(ANSI_BOLD_RED "Error\n :" ANSI_RESET ANSI_RED, STDERR_FILENO);
 	ft_putstr_fd(msg, STDERR_FILENO);
 	ft_putstr_fd(ANSI_RESET "\n\n", STDERR_FILENO);
 	return (0);
@@ -65,6 +65,6 @@ int	put_errmsg(char *msg)
 
 int	put_endmsg(void)
 {
-	ft_putstr_fd(ANSI_ITALIC_CYAN "Thank you for playing!" ANSI_RESET "\n\n", STDOUT_FILENO);
+	ft_putstr_fd(ANSI_CYAN "Thank you!" ANSI_RESET "\n\n", STDOUT_FILENO);
 	return (0);
 }

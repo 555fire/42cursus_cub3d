@@ -6,7 +6,7 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 11:13:20 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/06 12:15:50 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/06 12:22:47 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ static int	read_map_lines_loop(int fd, char **map_lines, t_map_data *data)
 			store_map_line(line, map_lines, data);
 		else
 		{
-			// According to the logic, non-map lines should not appear here.
-			// If they do, it's safer to free them to prevent memory leaks.
 			free(line);
 		}
 		line = read_line(fd);
