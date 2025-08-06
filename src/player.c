@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:27:58 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/06 00:02:30 by mamiyaza         ###   ########.fr       */
+/*   Updated: 2025/08/06 14:50:13 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static void	place_player(t_game *game, int x, int y, char c)
 	game->player.x = x + 0.5;
 	game->player.y = y + 0.5;
 	if (c == 'N')
-		game->player.dir = M_PI / 2;
-	else if (c == 'S')
 		game->player.dir = 3 * M_PI / 2;
+	else if (c == 'S')
+		game->player.dir = M_PI / 2;
 	else if (c == 'E')
 		game->player.dir = 0;
 	else if (c == 'W')
