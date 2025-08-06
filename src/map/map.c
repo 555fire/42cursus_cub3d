@@ -6,21 +6,13 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 11:14:11 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/06 12:36:28 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/06 14:39:46 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-static int	open_and_validate_file(const char *filename)
-{
-	int	fd;
 
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		return (printf("Error\nCannot open file %s\n", filename), -1);
-	return (fd);
-}
 
 static char	*process_map_header(int fd, t_game *game)
 {
@@ -61,6 +53,16 @@ static int	load_and_process_map_content(int fd, const char *filename,
 		return (0);
 	}
 	return (1);
+}
+
+static int	open_and_validate_file(const char *filename)
+{
+	int	fd;
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (printf("Error\nCannot open file %s\n", filename), -1);
+	return (fd);
 }
 
 static int	load_map_data(const char *filename, t_game *game,
