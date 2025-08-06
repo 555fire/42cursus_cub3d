@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_load.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 11:13:20 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/05 23:36:01 by mamiyaza         ###   ########.fr       */
+/*   Updated: 2025/08/06 12:15:50 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,22 +85,34 @@ static int	read_map_lines_loop(int fd, char **map_lines, t_map_data *data)
 		if (is_map_line(line))
 			store_map_line(line, map_lines, data);
 		else
+		{
+			// According to the logic, non-map lines should not appear here.
+			// If they do, it's safer to free them to prevent memory leaks.
 			free(line);
+		}
 		line = read_line(fd);
 	}
 	return (data->count > 0);
 }
 
-int	load_map_lines(int fd, int total_lines, t_map_data *map_data)
+int	load_map_lines(int fd, char *first_line, int total_lines,
+		t_map_data *map_data)
 {
 	char	**map_lines;
 
+	if (!first_line)
+		return (0);
 	map_lines = malloc(sizeof(char *) * (total_lines + 1));
 	if (!map_lines)
+	{
+		free(first_line);
 		return (0);
+	}
 	map_data->count = 0;
 	map_data->width = 0;
-	if (!read_map_lines_loop(fd, map_lines, map_data))
+	store_map_line(first_line, map_lines, map_data);
+	read_map_lines_loop(fd, map_lines, map_data);
+	if (map_data->count == 0)
 	{
 		free(map_lines);
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 18:31:35 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/06 09:08:03 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/06 12:15:49 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,7 @@ static int	add_header_element(char *line, t_game *game, int *flags)
 	return (1);
 }
 
-static int	skip_map_line(int fd, char *line)
-{
-	if (!is_map_line(line))
-		return (0);
-	lseek(fd, -(long)(ft_strlen(line) + 1), SEEK_CUR);
-	return (1);
-}
-
-int	read_header(int fd, t_game *game, int *flags)
+char	*read_header(int fd, t_game *game, int *flags)
 {
 	char	*line;
 
@@ -59,17 +51,14 @@ int	read_header(int fd, t_game *game, int *flags)
 		line = read_line(fd);
 		if (!line)
 			break ;
-		if (skip_map_line(fd, line))
-		{
-			free(line);
-			break ;
-		}
+		if (is_map_line(line))
+			return (line);
 		if (!add_header_element(line, game, flags))
 		{
 			free(line);
-			return (0);
+			return (NULL);
 		}
 		free(line);
 	}
-	return (1);
+	return (NULL);
 }
