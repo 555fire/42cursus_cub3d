@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 11:13:55 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/05 23:52:57 by mamiyaza         ###   ########.fr       */
+/*   Updated: 2025/08/06 12:15:49 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ typedef struct s_map_data
 }			t_map_data;
 
 int			parse_map_from_file(const char *filename, t_game *game);
-int			read_header(int fd, t_game *game, int *flags);
+char		*read_header(int fd, t_game *game, int *flags);
 int			count_lines(const char *filename);
-int			load_map_lines(int fd, int total_lines, t_map_data *d);
+int			load_map_lines(int fd, char *first_line, int total_lines,
+				t_map_data *d);
 int			validate_map(t_game *game);
 int			is_map_line(const char *line);
 int			parse_header_line(char *line, t_game *game);

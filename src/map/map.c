@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 11:14:11 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/05 23:35:22 by mamiyaza         ###   ########.fr       */
+/*   Updated: 2025/08/06 12:15:49 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,10 @@ static void	free_game_map_data(t_game *game)
 static int	load_map_data(const char *filename, t_game *game,
 		t_map_data *map_data)
 {
-	int	fd;
-	int	flags;
-	int	total_lines;
+	int		fd;
+	int		flags;
+	int		total_lines;
+	char	*first_map_line;
 
 	flags = 0;
 	game->floor_color = -1;
@@ -86,15 +87,30 @@ static int	load_map_data(const char *filename, t_game *game,
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (printf("Error\nCannot open file %s\n", filename), 0);
-	if (!read_header(fd, game, &flags))
-		return (close(fd), 0);
+	first_map_line = read_header(fd, game, &flags);
+	if (!first_map_line)
+	{
+		close(fd);
+		return (put_errmsg("Invalid file format or missing map content."));
+	}
 	if (flags != (ID_NO | ID_SO | ID_WE | ID_EA | ID_F | ID_C))
-		return (close(fd), put_errmsg("Missing header elements"));
+	{
+		free(first_map_line);
+		close(fd);
+		return (put_errmsg("Missing header elements"));
+	}
 	total_lines = count_lines(filename);
 	if (total_lines < 0)
-		return (close(fd), 0);
-	if (!load_map_lines(fd, total_lines, map_data))
-		return (close(fd), 0);
+	{
+		free(first_map_line);
+		close(fd);
+		return (0);
+	}
+	if (!load_map_lines(fd, first_map_line, total_lines, map_data))
+	{
+		close(fd);
+		return (0);
+	}
 	close(fd);
 	return (1);
 }

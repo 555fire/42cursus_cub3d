@@ -6,7 +6,7 @@
 /*   By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:26:00 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/06 11:12:23 by lchuang          ###   ########.fr       */
+/*   Updated: 2025/08/06 12:01:07 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static int	init_graphics(t_game *game)
 	if (!load_texture(game, &game->north_tex, game->north_path)
 		|| !load_texture(game, &game->south_tex, game->south_path)
 		|| !load_texture(game, &game->east_tex, game->east_path)
-		|| !load_texture(game, &game->west_tex, game->west_path)){
+		|| !load_texture(game, &game->west_tex, game->west_path))
+	{
 		return (put_errmsg("load_texture failed"));
 	}
 	game->win = mlx_new_window(game->mlx, WIDTH, HEIGHT, "cub3D - Minimap");
@@ -49,7 +50,7 @@ static int	init_graphics(t_game *game)
 
 static int	validate_filename(const char *filename)
 {
-	const char	*extension;
+	char	*extension;
 
 	extension = ft_strrchr(filename, '.');
 	if (!extension || ft_strcmp(extension, ".cub") != 0)
@@ -67,7 +68,6 @@ int	main(int argc, char **argv)
 		return (put_errmsg("Invalid file extension: must be .cub"), 1);
 	if (!init_game_from_file(argv[1], &game) || !init_graphics(&game))
 	{
-		// fprintf(stderr, "Error\n");
 		cleanup_game(&game);
 		return (1);
 	}
