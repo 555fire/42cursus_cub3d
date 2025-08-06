@@ -6,7 +6,8 @@
 /*   By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 11:14:11 by lchuang           #+#    #+#             */
-/*   Updated: 2025/08/06 13:29:57 by mamiyaza         ###   ########.fr       */
+/*   Updated: 2025/08/06
+ 12:15:49 by lchuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,40 +74,73 @@ static void	free_game_map_data(t_game *game)
 	game->map = NULL;
 }
 
-static int	load_map_data(const char *filename, t_game *game,
-		t_map_data *map_data)
+static int	open_and_validate_file(const char *filename)
 {
-	int		fd;
-	int		flags;
-	int		total_lines;
+	int	fd;
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (printf("Error\nCannot open file %s\n", filename), -1);
+	return (fd);
+}
+
+static char	*process_map_header(int fd, t_game *game)
+{
 	char	*first_map_line;
+	int		flags;
 
 	flags = 0;
 	game->floor_color = -1;
 	game->ceiling_color = -1;
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		return (printf("Error\nCannot open file %s\n", filename), 0);
 	first_map_line = read_header(fd, game, &flags);
 	if (!first_map_line)
 	{
-		close(fd);
-		return (put_errmsg("Invalid file format or missing map content."));
+		put_errmsg("Invalid file format or missing map content.");
+		return (NULL);
 	}
 	if (flags != (ID_NO | ID_SO | ID_WE | ID_EA | ID_F | ID_C))
 	{
 		free(first_map_line);
-		close(fd);
-		return (put_errmsg("Missing header elements"));
+		put_errmsg("Missing header elements");
+		return (NULL);
 	}
+	return (first_map_line);
+}
+
+static int	load_and_process_map_content(int fd, const char *filename,
+		char *first_map_line, t_map_data *map_data)
+{
+	int	total_lines;
+
 	total_lines = count_lines(filename);
 	if (total_lines < 0)
 	{
 		free(first_map_line);
-		close(fd);
 		return (0);
 	}
 	if (!load_map_lines(fd, first_map_line, total_lines, map_data))
+	{
+		return (0);
+	}
+	return (1);
+}
+
+static int	load_map_data(const char *filename, t_game *game,
+		t_map_data *map_data)
+{
+	int		fd;
+	char	*first_map_line;
+
+	fd = open_and_validate_file(filename);
+	if (fd < 0)
+		return (0);
+	first_map_line = process_map_header(fd, game);
+	if (!first_map_line)
+	{
+		close(fd);
+		return (0);
+	}
+	if (!load_and_process_map_content(fd, filename, first_map_line, map_data))
 	{
 		close(fd);
 		return (0);
