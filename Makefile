@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mamiyaza <mamiyaza@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: lchuang <lchuang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/16 11:11:56 by lchuang           #+#    #+#              #
-#    Updated: 2025/08/06 06:33:21 by mamiyaza         ###   ########.fr        #
+#    Updated: 2025/08/06 12:38:27 by lchuang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS = 	main.c \
 		map/map_parser.c \
 		map/map_validate.c \
 		map/utils.c \
+		map/map_data.c
 
 OBJ_DIR		=	objs
 OBJ		=	$(SRCS:.c=.o)
